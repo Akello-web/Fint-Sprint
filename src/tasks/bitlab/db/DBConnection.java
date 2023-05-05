@@ -271,4 +271,39 @@ public class DBConnection {
         }
         return category;
     }
+
+    public static void updateUser(User user){
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "UPDATE users " +
+                    "SET " +
+                    "full_name = ?, " +
+                    "password = ? " +
+                    "WHERE id = ?");
+
+            statement.setString(1, user.getFullName());
+            statement.setString(2, user.getPassword());
+            statement.setInt(3, user.getId());
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteUser(int id){
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "DELETE FROM users WHERE id = ?");
+            statement.setInt(1, id) ;
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
