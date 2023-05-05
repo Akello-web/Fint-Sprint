@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import tasks.bitlab.db.Category;
 import tasks.bitlab.db.Comment;
 import tasks.bitlab.db.DBConnection;
 import tasks.bitlab.db.News;
@@ -24,6 +25,8 @@ public class NewsDetailsServlet extends HttpServlet {
         if(news!=null) {
             ArrayList<Comment> comments = DBConnection.getComment(news.getId());
             request.setAttribute("comments", comments);
+            ArrayList<Category> categories = DBConnection.getCategory();
+            request.setAttribute("categoryler", categories);
         }
         request.getRequestDispatcher("/newsdetails.jsp").forward(request, response);
     }

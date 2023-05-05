@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="tasks.bitlab.db.*" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,10 +21,10 @@
           <h5 class="card-title mb-0"><%=news.getTitle()%></h5>
           <div class="bg-secondary mb-2" style="height: 1px"></div>
           <h6 class="card-text"><%=news.getContent()%></h6>
-          <p class="card-text mb-0">Posted by <strong><%=news.getUser().getFullName()%></strong></p>
+          <p class="card-text mb-0">CATEGORY: <strong><%=news.getCategory().getName()%></strong></p>
           <p class="card-text">Date: <%=news.getPostDate()%></p>
           <%
-            if(currentUser!=null && currentUser.getId() == news.getUser().getId()){
+            if(currentUser!=null && currentUser.getId() == 1){
           %>
           <div class="row mt-3">
             <div class="col-12">
@@ -66,6 +67,27 @@
                   <textarea class="form-control " name="content" required rows="5"><%=news.getContent()%></textarea>
                 </div>
               </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label>CATEGORY: </label>
+                  </div>
+                </div>
+                <div class="row mt-1" >
+                  <div class="col-12">
+                    <select class="form-select" name="news_category" required>
+                      <%
+                        ArrayList<Category> categories = (ArrayList<Category>) request.getAttribute("categoryler");
+                        if(categories!=null){
+                          for (Category cs : categories){
+                      %>
+                      <option <%=(Objects.equals(cs.getName(), news.getCategory().getName()) ?"selected":"")%> value="<%=cs.getId()%>"><%=cs.getName()%></option>
+                      <%
+                          }
+                        }
+                      %>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

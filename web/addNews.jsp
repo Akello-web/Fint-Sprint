@@ -37,7 +37,7 @@
         <div class="row mt-2">
           <div class="col-12">
             <label>NEWS CATEGORY:</label>
-            <select class="form-control-sm" name="news_category" required>
+            <select class="form-select" name="news_category" required>
               <%
                 ArrayList<Category> categories = (ArrayList<Category>) request.getAttribute("categoryler");
                 if(categories!=null){
