@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">NEWS</a>
+              <a class="nav-link" aria-current="page" href="/">NEWS</a>
             </li>
             <%
               if(currentUser!=null){
