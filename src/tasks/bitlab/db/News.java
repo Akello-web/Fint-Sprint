@@ -7,16 +7,18 @@ public class News {
     private String title;
     private String content;
     private User user;
+    private Category category;
     private Timestamp postDate;
 
     public News() {
     }
 
-    public News(int id, String title, String content, User user, Timestamp postDate) {
+    public News(int id, String title, String content, User user, Category category, Timestamp postDate) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.user = user;
+        this.category = category;
         this.postDate = postDate;
     }
 
@@ -58,5 +60,13 @@ public class News {
 
     public void setPostDate(Timestamp postDate) {
         this.postDate = postDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

@@ -14,13 +14,6 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/add-page_author">All authors</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/news">All news</a>
-            </li>
-
             <%
               if(currentUser!=null){
             %>
@@ -28,14 +21,11 @@
               if(currentUser.getRole()==1){
             %>
             <li class="nav-item">
-              <a class="nav-link" href="/add-page_book">Add book</a>
+              <a class="nav-link" href="/add_news">Add news</a>
             </li>
             <%
               }
             %>
-            <li class="nav-item">
-              <a class="nav-link" href="/add-page_news">Add news</a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <%=currentUser.getFullName()%>
@@ -60,14 +50,6 @@
               }
             %>
           </ul>
-          <form action="/" method="get" class="form-control-sm ml-auto w-25 d-flex m-0 me-4">
-            <%
-              String key = request.getParameter("key");
-              if(key==null) key = "";
-            %>
-          <input class="form-control mr-sm-2" type="search" name="key" placeholder="search..." value="<%=key%>">
-          <button class="ms-1 btn btn-primary my-2 my-sm-0">Search</button>
-          </form>
         </div>
       </div>
     </nav>

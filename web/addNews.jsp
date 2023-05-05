@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="tasks.bitlab.db.Book" %>
+<%@ page import="tasks.bitlab.db.Category" %>
+<%@ page import="tasks.bitlab.db.DBConnection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -30,6 +31,24 @@
         <div class="row mt-2">
           <div class="col-12">
             <textarea class="form-control" name="content" placeholder="Insert content" rows="5" required></textarea>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12">
+            <label>NEWS CATEGORY:</label>
+            <select class="form-control-sm" name="news_category" required>
+              <%
+                ArrayList<Category> categories = (ArrayList<Category>) request.getAttribute("categoryler");
+                if(categories!=null){
+                  for (Category cs : categories){
+              %>
+              <option value="<%=cs.getId()%>"><%=cs.getName()%></option>
+              <%
+                  }
+                }
+              %>
+            </select>
           </div>
         </div>
 
