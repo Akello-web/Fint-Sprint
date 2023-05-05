@@ -160,7 +160,22 @@
                 <h6 class="mb-1"><%=comment.getUser().getFullName()%></h6>
                 <small class="text-muted"><%=comment.getPostDate()%></small>
               </div>
-              <p class="mb-1 text-decoration-underline"><%=comment.getComment()%></p>
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1 text-decoration-underline"><%=comment.getComment()%></p>
+                <%
+                  if(currentUser!=null){
+                  if(comment.getUser().getId()==currentUser.getId() || currentUser.getId()==1){
+                %>
+                <form action="/delete-comment" method="post">
+                  <input type="hidden" name="comment_id" value="<%=comment.getId()%>">
+                  <input type="hidden" name="news_id" value="<%=news.getId()%>">
+                  <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteComment">delete</button>
+                </form>
+                <%
+                    }
+                  }
+                %>
+              </div>
             </a>
           </div>
         <%

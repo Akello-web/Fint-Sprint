@@ -306,4 +306,18 @@ public class DBConnection {
             e.printStackTrace();
         }
     }
+
+    public static void deleteComment(int id){
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "DELETE FROM comments WHERE id = ?");
+            statement.setInt(1, id) ;
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
